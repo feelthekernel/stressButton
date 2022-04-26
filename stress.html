@@ -54,7 +54,20 @@
         stress++;
 		    document.getElementById("number").innerHTML = stress;
       }
-	  
+      function getProgressBarWidthVal()
+      {
+        let progressElement = document.getElementById("progress");
+        let progressWidthString = progressElement.getAttribute("style");
+        let startIndex = progressWidthString.indexOf(":");
+        let endIndex = progressWidthString.indexOf("%");
+        let widthString = progressWidthString.slice(startIndex, endIndex);
+        return parseInt(widthString);
+      }
+      function setProgressBarWidthVal()
+      {
+        let progressElement = document.getElementById("progress");
+      }
+
     </script>
     </html>
         
