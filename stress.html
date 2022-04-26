@@ -7,12 +7,12 @@
        <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <style>
       .center{
-          margin: 0;
+      margin: 0;
 		  position: absolute;
 		  top: 50%;
 		  left: 50%;
@@ -23,6 +23,21 @@
         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-weight: bold;
       }
+      #enough{/* thx to stackoverflow */
+        position: absolute;
+        margin: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 1000px;
+        height: 500px;
+      }
+      #frog{ /* thx to w3schools */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
     </style>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -31,13 +46,16 @@
 
     <div id="stress-button" class="center">
 	  <a class="waves-effect waves-light btn" onclick="countStress()">Stress Button</a>
-    <img hidden src="pepefrg-4.gif" width="200" height="200"></img>
-
     <div class="progress">
       <div id="progress" class="determinate" style="width: 0%"></div>
     </div>
 	  <div id="count"">Count: <span id="number">0</span></div>
 	  </div>
+
+    <div id="enough" hidden class="animate__backInUp animate__animated animate__slower">
+      <img id="frog" src="pepefrg-4.gif" width="200" height="200"></img>
+      <h3 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Dude, it's enough for today. Go get some sleep.</h3>
+    </div>
 
     <body>
     
@@ -53,7 +71,17 @@
       {
         stress++;
 		    document.getElementById("number").innerHTML = stress;
-        setProgressBarWidthVal(getProgressBarWidthVal() + 1);
+        let widthVal = getProgressBarWidthVal();
+        setProgressBarWidthVal(widthVal + 1);
+        if(widthVal == 10)
+        {
+          let stressButtonElement = document.getElementById("stress-button");
+          let progressElement = document.getElementById("progress");
+          let enoughElement = document.getElementById("enough");
+          stressButtonElement.setAttribute("hidden", "hidden");
+          progressElement.setAttribute("hidden", "hidden");
+          enoughElement.removeAttribute("hidden");
+        }
       }
       function getProgressBarWidthVal()
       {
