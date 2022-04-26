@@ -11,6 +11,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <style>
+      /* thx to stackoverflow and w3schools */
       .center{
       margin: 0;
 		  position: absolute;
@@ -23,7 +24,7 @@
         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-weight: bold;
       }
-      #enough{/* thx to stackoverflow */
+      #enough{
         position: absolute;
         margin: auto;
         top: 0;
@@ -33,28 +34,43 @@
         width: 1000px;
         height: 500px;
       }
-      #frog{ /* thx to w3schools */
+      #frog{
         display: block;
         margin-left: auto;
         margin-right: auto;
       }
+      #stressbutton{
+        font-size: 30px;
+      }
+      /*#enough > h3{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }*/
     </style>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Stress Button</title>
     </head>
 
-    <div id="stress-button" class="center">
-	  <a class="waves-effect waves-light btn" onclick="countStress()">Stress Button</a>
-    <div class="progress">
-      <div id="progress" class="determinate" style="width: 0%"></div>
-    </div>
-	  <div id="count"">Count: <span id="number">0</span></div>
+    <div id="stressDiv" class="center">
+      <a id="stressbutton" class="waves-effect waves-light btn-large" onclick="countStress()">Stress Button</a>
+      <div class="progress">
+        <div id="progress" class="determinate" style="width: 0%"></div>
+      </div>
+      <div id="count"">
+        Count: <span id="number">0</span>
+      </div>
 	  </div>
 
     <div id="enough" hidden class="animate__backInUp animate__animated animate__slower">
       <img id="frog" src="pepefrg-4.gif" width="200" height="200"></img>
-      <h3 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Dude, it's enough for today. Go get some sleep.</h3>
+      <div style="text-align: center;">
+        <span style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 35px;">Dude, it's enough for today.</span>
+      </div>
+      <div style="text-align: center;">
+        <span style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 35px;">Go get some sleep.</span>
+      </div>
     </div>
 
     <body>
@@ -73,9 +89,9 @@
 		    document.getElementById("number").innerHTML = stress;
         let widthVal = getProgressBarWidthVal();
         setProgressBarWidthVal(widthVal + 1);
-        if(widthVal == 10)
+        if(widthVal == 99)
         {
-          let stressButtonElement = document.getElementById("stress-button");
+          let stressButtonElement = document.getElementById("stressDiv");
           let progressElement = document.getElementById("progress");
           let enoughElement = document.getElementById("enough");
           stressButtonElement.setAttribute("hidden", "hidden");
